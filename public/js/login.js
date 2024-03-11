@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             contrasenaError.innerHTML = "La contraseña debe tener al menos 1 número, 1 mayúscula y mínimo 8 caracteres.";
             mal=true;
         }
-        if (mal==true){
+        if (mal==false){
             ejecutarFuncion();
         }
 
