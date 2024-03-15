@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Tbl_Sedes extends Migration
+class CreateSedesTable extends Migration
 {
     /**
      * Run the migrations.

@@ -4,19 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Tbl_Asignaciones extends Migration
+class CreateAsignacionesTable extends Migration
 {
     public function up()
     {
         Schema::create('tbl_asignaciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_gestor');
-            $table->unsignedBigInteger('id_tecnico');
-            $table->unsignedBigInteger('id_incidencia');
+            $table->foreignId('id_gestor')->nullable()->constrained('tbl_usuarios');
+            $table->foreignId('id_tecnico')->nullable()->constrained('tbl_usuarios');
+            $table->foreignId('id_incidencia')->nullable()->constrained('tbl_incidencias');
 
-            $table->foreign('id_gestor')->references('id')->on('tbl_usuarios');
-            $table->foreign('id_tecnico')->references('id')->on('tbl_usuarios');
-            $table->foreign('id_incidencia')->references('id')->on('tbl_incidencias');
             $table->timestamps();
         });
     }

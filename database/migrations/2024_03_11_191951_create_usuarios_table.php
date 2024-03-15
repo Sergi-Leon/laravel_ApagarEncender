@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Tbl_Usuarios extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,11 +18,11 @@ class Tbl_Usuarios extends Migration
             $table->string('nombre_user');
             $table->string('email_user')->unique();
             $table->string('password_user');
-            $table->integer('rol_id')->unsigned();
-            $table->integer('sede_id')->unsigned();
 
-            $table->foreign('rol_id')->references('id')->on('tbl_roles');
-            $table->foreign('sede_id')->references('id')->on('tbl_sedes');
+            $table->foreignId('rol_id')->nullable()->constrained('tbl_roles');
+            $table->foreignId('sede_id')->nullable()->constrained('tbl_sedes');
+
+
 
             $table->timestamps();
         });
