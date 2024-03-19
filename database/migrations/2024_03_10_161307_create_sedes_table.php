@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Tablaejemplo extends Migration
+class CreateSedesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class Tablaejemplo extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tbl_sedes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre_sede')->unique();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class Tablaejemplo extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tbl_sedes');
     }
-}
+};
