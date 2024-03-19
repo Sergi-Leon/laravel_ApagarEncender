@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol_id',
+        'sede_id'
     ];
 
     /**
@@ -42,4 +44,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function sede()
+    {
+        return $this->belongsTo(Sede::class);
+    }
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+    }
+
+    public function incidenciasCliente()
+    {
+        return $this->hasMany(Incidencia::class, 'id_cliente');
+    }
+
+    public function incidenciasTecnico()
+    {
+        return $this->hasMany(Incidencia::class, 'id_tecnico');
+    }
+
+    public function chats() 
+    {
+        return $this->hasMany(Chat::class, 'id_usuario');
+    }
 }

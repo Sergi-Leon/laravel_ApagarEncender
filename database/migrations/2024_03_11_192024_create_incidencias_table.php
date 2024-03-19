@@ -19,8 +19,8 @@ class CreateIncidenciasTable extends Migration
             $table->enum('prioridad_inci', ['Alta', 'Media', 'Baja']);
             $table->text('comentario_inci')->nullable();
 
-            $table->foreignId('id_cliente')->nullable()->constrained('tbl_usuarios');
-            $table->foreignId('id_tecnico')->nullable()->constrained('tbl_usuarios');
+            $table->foreignId('id_cliente')->nullable()->constrained('users');
+            $table->foreignId('id_tecnico')->nullable()->constrained('users');
 
             $table->timestamps();
         });
