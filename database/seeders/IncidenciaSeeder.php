@@ -13,6 +13,6 @@ class IncidenciaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

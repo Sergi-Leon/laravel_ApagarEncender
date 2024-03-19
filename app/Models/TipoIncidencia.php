@@ -9,7 +9,7 @@ class TipoIncidencia extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_usuarios_tipos_incidencias';
+    protected $table = 'tbl_tipos_incidencias';
 
     protected $fillable = ['tipo_tipoinci','descripcion_tipoinci'];
 }

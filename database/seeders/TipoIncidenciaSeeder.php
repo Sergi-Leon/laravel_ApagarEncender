@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoIncidencia;
 use Illuminate\Database\Seeder;
 
 class TipoIncidenciaSeeder extends Seeder
@@ -13,27 +14,24 @@ class TipoIncidenciaSeeder extends Seeder
      */
     public function run()
     {
-        $tipos_incidencias = [
-            [
-                'Tipo' => 'Problema de red',
-                'Descripcion' => 'Problema relacionado con la conectividad de red',
-            ],
-            [
-                'Tipo' => 'Problema de hardware',
-                'Descripcion' => 'Problema relacionado con el hardware del equipo',
-            ],
-            [
-                'Tipo' => 'Problema de software',
-                'Descripcion' => 'Problema relacionado con el funcionamiento del equipo',
-            ],
-            [
-                'Tipo' => 'Problema de seguridad',
-                'Descripcion' => 'Problema relacionado con la seguridad de los datos o la infraestructura',
-            ],
-            [
-                'Tipo' => 'Problema de servicio',
-                'Descripcion' => 'Solicitud de un servicio específico por parte del cliente.',
-            ]
-        ];
+        TipoIncidencia::create([
+            'tipo_tipoinci' => 'Problema de red',
+            'descripcion_tipoinci' => 'Problema relacionado con la conectividad de red.'
+        ]);
+
+        TipoIncidencia::create([
+            'tipo_tipoinci' => 'Problema de hardware',
+            'descripcion_tipoinci' => 'Problema relacionado con el hardware del equipo.'
+        ]);
+
+        TipoIncidencia::create([
+            'tipo_tipoinci' => 'Problema de software',
+            'descripcion_tipoinci' => 'Problema relacionado con el funcionamiento del software.'
+        ]);
+
+        TipoIncidencia::create([
+            'tipo_tipoinci' => 'Problema de seguridad',
+            'descripcion_tipoinci' => 'Problema relacionado con la seguridad de los datos o la infraestructura.'
+        ]);
     }
 }
