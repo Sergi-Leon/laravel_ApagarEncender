@@ -10,7 +10,7 @@ class CreateTiposIncidenciasTable extends Migration
     {
         Schema::create('tbl_tipos_incidencias', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_tipoinci');
+            $table->string('nombre_tipo_tipoinci');
             $table->text('descripcion_tipoinci')->nullable();
             $table->timestamps();
         });

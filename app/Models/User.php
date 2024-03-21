@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol_id',
+        'sede_id'
     ];
 
     /**
@@ -40,5 +42,41 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+    }
+
+    public function sede()
+    {
+        return $this->belongsTo(Sede::class);
+    }
+
+    public function incidenciasAsignadas()
+    {
+        return $this->hasMany(Incidencia::class, 'id_tecnico');
+    }
+
+    public function incidenciasCreadas()
+    {
+        return $this->hasMany(Incidencia::class, 'id_cliente');
+    }
+
+    public function tipoIncidencias()
+    {
+        return $this->belongsToMany(TipoIncidencia::class, 'tbl_usuarios_tipos_incidencias', 'id_usuario', 'id_tipoIncidencia');
+    }
+
+    public function chatsEnviados()
+    {
+        return $this->hasMany(Chat::class, 'remitente_id');
+    }
+
+    public function chatsRecibidos()
+    {
+        return $this->hasMany(Chat::class, 'destinatario_id');
+    }
 }

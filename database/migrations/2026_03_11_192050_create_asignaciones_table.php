@@ -10,8 +10,8 @@ class CreateAsignacionesTable extends Migration
     {
         Schema::create('tbl_asignaciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_gestor')->nullable()->constrained('tbl_usuarios');
-            $table->foreignId('id_tecnico')->nullable()->constrained('tbl_usuarios');
+            $table->foreignId('id_gestor')->nullable()->constrained('users');
+            $table->foreignId('id_tecnico')->nullable()->constrained('users');
             $table->foreignId('id_incidencia')->nullable()->constrained('tbl_incidencias');
 
             $table->timestamps();

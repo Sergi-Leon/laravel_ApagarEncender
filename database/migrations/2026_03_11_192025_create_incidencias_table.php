@@ -10,8 +10,8 @@ class CreateIncidenciasTable extends Migration
     {
         Schema::create('tbl_incidencias', function (Blueprint $table) {
             $table->id();
-            $table->string('categoria_inci');
-            $table->string('subcategoria_inci');
+            $table->foreignId('id_cliente')->nullable()->constrained('users');
+            $table->foreignId('id_tecnico')->nullable()->constrained('users');
             $table->text('descripcion_inci');
             $table->timestamp('fecha_create_inci')->useCurrent();
             $table->timestamp('fecha_resuelta_inci')->nullable();
@@ -19,8 +19,8 @@ class CreateIncidenciasTable extends Migration
             $table->enum('prioridad_inci', ['Alta', 'Media', 'Baja']);
             $table->text('comentario_inci')->nullable();
 
-            $table->foreignId('id_cliente')->nullable()->constrained('tbl_usuarios');
-            $table->foreignId('id_tecnico')->nullable()->constrained('tbl_usuarios');
+            $table->foreignId('tipo_incidencia_id')->nullable()->constrained('tbl_tipos_incidencias');
+            $table->foreignId('tipo_subincidencia_id')->nullable()->constrained('tbl_tipos_subincidencias');
 
             $table->timestamps();
         });
@@ -29,10 +29,12 @@ class CreateIncidenciasTable extends Migration
     public function down()
     {
         Schema::table('tbl_incidencias', function (Blueprint $table) {
+            $table->dropForeign(['tipo_incidencia_id']);
+            $table->dropForeign(['tipo_subincidencia_id']);
             $table->dropForeign(['id_cliente']);
             $table->dropForeign(['id_tecnico']);
         });
 
         Schema::dropIfExists('tbl_incidencias');
     }
-};
+}

@@ -7,31 +7,26 @@ use Illuminate\Database\Seeder;
 
 class TipoIncidenciaSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        TipoIncidencia::create([
-            'tipo_tipoinci' => 'Problema de red',
-            'descripcion_tipoinci' => 'Problema relacionado con la conectividad de red.'
-        ]);
+        $tipoIncidencia1 = new TipoIncidencia();
+        $tipoIncidencia1->nombre_tipo_tipoinci = 'Problema de red';
+        $tipoIncidencia1->descripcion_tipoinci = 'Problema relacionado con la conectividad de red.';
+        $tipoIncidencia1->save();
 
-        TipoIncidencia::create([
-            'tipo_tipoinci' => 'Problema de hardware',
-            'descripcion_tipoinci' => 'Problema relacionado con el hardware del equipo.'
-        ]);
+        $tipoIncidencia2 = new TipoIncidencia();
+        $tipoIncidencia2->nombre_tipo_tipoinci = 'Problema de hardware';
+        $tipoIncidencia2->descripcion_tipoinci = 'Problema relacionado con el hardware del equipo.';
+        $tipoIncidencia2->save();
 
-        TipoIncidencia::create([
-            'tipo_tipoinci' => 'Problema de software',
-            'descripcion_tipoinci' => 'Problema relacionado con el funcionamiento del software.'
-        ]);
+        $tipoIncidencia3 = new TipoIncidencia();
+        $tipoIncidencia3->nombre_tipo_tipoinci = 'Problema de software';
+        $tipoIncidencia3->descripcion_tipoinci = 'Problema relacionado con el funcionamiento del software.';
+        $tipoIncidencia3->save();
 
-        TipoIncidencia::create([
-            'tipo_tipoinci' => 'Problema de seguridad',
-            'descripcion_tipoinci' => 'Problema relacionado con la seguridad de los datos o la infraestructura.'
-        ]);
+        $tipoIncidencia4 = new TipoIncidencia();
+        $tipoIncidencia4->nombre_tipo_tipoinci = 'Problema de seguridad';
+        $tipoIncidencia4->descripcion_tipoinci = 'Problema relacionado con la seguridad de los datos o la infraestructura.';
+        $tipoIncidencia4->save();
     }
 }

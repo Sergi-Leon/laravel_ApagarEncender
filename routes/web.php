@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+use App\Models\Asignacion;
+use App\Models\Chat;
+use App\Models\Incidencia;
+use App\Models\Rol;
+use App\Models\Sede;
+use App\Models\TipoIncidencia;
+use App\Models\User;
+use App\Models\UsuarioTipoIncidencia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +24,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('cliente');
+});
+
+Route::controller(User::class)->group(function(){
+    Route::get('admin')->name('admin');
 });

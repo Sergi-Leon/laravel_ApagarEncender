@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class UsuarioTipoIncidenciaSeeder extends Seeder
+class TipoSubincidencia extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,9 @@ class UsuarioTipoIncidenciaSeeder extends Seeder
      */
     public function run()
     {
-        
+        TipoSubincidencia::create([
+            'nombre_tipo_tiposubinci' => ''
+            'descripcion_tiposubinci' => 
+        ]);
     }
 }

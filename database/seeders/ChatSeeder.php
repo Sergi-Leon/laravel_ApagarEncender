@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class UsuarioTipoIncidenciaSeeder extends Seeder
+class ChatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class UsuarioTipoIncidenciaSeeder extends Seeder
      */
     public function run()
     {
-        
+        //
     }
 }

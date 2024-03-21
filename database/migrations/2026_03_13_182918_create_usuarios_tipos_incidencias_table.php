@@ -10,7 +10,7 @@ class CreateUsuariosTiposIncidenciasTable extends Migration
     {
         Schema::create('tbl_usuarios_tipos_incidencias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario')->nullable()->constrained('tbl_usuarios')->onDelete('cascade');
+            $table->foreignId('id_usuario')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('id_tipoIncidencia')->nullable()->constrained('tbl_tipos_incidencias')->onDelete('cascade');
 
             $table->timestamps();
