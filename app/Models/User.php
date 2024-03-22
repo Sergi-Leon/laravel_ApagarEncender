@@ -42,31 +42,40 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
-
-    public function sede()
-    {
-        return $this->belongsTo(Sede::class);
-    }
 
     public function rol()
     {
         return $this->belongsTo(Rol::class);
     }
 
-    public function incidenciasCliente()
+    public function sede()
     {
-        return $this->hasMany(Incidencia::class, 'id_cliente');
+        return $this->belongsTo(Sede::class);
     }
 
-    public function incidenciasTecnico()
+    public function incidenciasAsignadas()
     {
         return $this->hasMany(Incidencia::class, 'id_tecnico');
     }
 
-    public function chats() 
+    public function incidenciasCreadas()
     {
-        return $this->hasMany(Chat::class, 'id_usuario');
+        return $this->hasMany(Incidencia::class, 'id_cliente');
+    }
+
+    public function tipoIncidencias()
+    {
+        return $this->belongsToMany(TipoIncidencia::class, 'tbl_usuarios_tipos_incidencias', 'id_usuario', 'id_tipoIncidencia');
+    }
+
+    public function chatsEnviados()
+    {
+        return $this->hasMany(Chat::class, 'remitente_id');
+    }
+
+    public function chatsRecibidos()
+    {
+        return $this->hasMany(Chat::class, 'destinatario_id');
     }
 }

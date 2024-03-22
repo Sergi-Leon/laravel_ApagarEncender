@@ -11,10 +11,20 @@ class Chat extends Model
 
     protected $table = 'tbl_chat';
 
-    protected $fillable = ['mensaje_chat','id_usuario'];
+    protected $fillable = ['mensaje_chat', 'remitente_id', 'destinatario_id', 'incidencia_id'];
 
-    public function user()
+    public function remitente()
     {
-        return $this->belongsTo(User::class, 'id_usuario');
+        return $this->belongsTo(User::class, 'remitente_id');
+    }
+
+    public function destinatario()
+    {
+        return $this->belongsTo(User::class, 'destinatario_id');
+    }
+
+    public function incidencia()
+    {
+        return $this->belongsTo(Incidencia::class);
     }
 }

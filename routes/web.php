@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Ruta para cerrar sesión
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::post('/eliminarC', [AdminController::class, 'eliminarC'])->name('eliminar.cliente');
+Route::post('/editarC', [AdminController::class, 'editarC'])->name('editar.cliente');
+Route::post('/nuevoC', [AdminController::class, 'nuevoC'])->name('nuevo.cliente');
+Route::post('/buscarC', [AdminController::class, 'buscarC'])->name('buscar.cliente');
+Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente');
 });
