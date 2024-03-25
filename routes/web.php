@@ -30,3 +30,12 @@ Route::get('/', function () {
 Route::controller(User::class)->group(function(){
     Route::get('admin')->name('admin');
 });
+
+Route::controller(ClienteController::class)->group(function () {
+    Route::get('/home', 'form');
+    // SELECT Incidencias
+    Route::get('/cliente/form/', 'form')->name('cliente.formulario');
+    // SELECT Subincidencias AJAX
+    Route::get('/cliente/subincidencias/{id}', 'subincidencia');
+});
+

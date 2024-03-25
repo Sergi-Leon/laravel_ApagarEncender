@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Incidencia</title>
     <!-- Incluir estilos de Bulma desde el CDN -->
@@ -11,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Token -->
+
     <style>
         @font-face {
             font-family: 'Gotham';
@@ -75,10 +78,11 @@
                         <label class="label">Categoría</label>
                         <div class="control has-icons-left">
                             <div class="select">
-                                <select name="categoria">
-                                    <option selected>Red</option>
-                                    <option>Hardware</option>
-                                    <option>Software</option>
+                                <select name="categoria" id='selectCategorias'>
+                                    <option value="">...</option>
+                                    @foreach($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}">{{ $categoria->nombre_tipo_tipoinci }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <span class="icon is-small is-left">
@@ -87,11 +91,14 @@
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label">Subcategoría</label>
-                        <div class="control">
-                            <input class="input" type="text" name="subcategoria" placeholder="Ingrese la subcategoría">
+                    <label class="label">Subcategoría</label>
+                    <div class="control has-icons-left">
+                        <div class="select">
+                            <select name="subcategoria" id='selectSubcategorias'></select>
                         </div>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-pen"></i>
+                        </span>
                     </div>
 
                     <div class="field">
@@ -110,6 +117,29 @@
             </form>
         </div>
     </section>
+    <script>
+    
+    document.getElementById("selectCategorias").addEventListener('change', function() {
+        categoria = this.value; // Actualiza el valor de 'categoria' cuando cambia el select
+        var formdata = new FormData();
+        formdata.append('idCategoria', categoria);
+
+        fetch('/cliente/subincidencias/' + categoria)
+        // Siempre que reciba cosas por GET
+        .then(response => response.json())
+        .then(data => {
+            var selectSubcategorias = document.getElementById('selectSubcategorias');
+            selectSubcategorias.innerHTML = '<option value="">...</option>';
+            
+            // Recorre los datos devueltos y agrega opciones al select
+            data.forEach(subcategoria => {
+                selectSubcategorias.innerHTML += '<option value="' + subcategoria.id + '">' + subcategoria.nombre_tipo_tiposubinci + '</option>';
+            });
+        })
+    });
+
+    </script>
 </body>
+
 
 </html>
