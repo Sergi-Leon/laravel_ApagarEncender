@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function incidenciasAsignadas()
     {
-        return $this->hasMany(Incidencia::class, 'id_tecnico');
+        return $this->hasMany(Asignacion::class, 'id_tecnico');
     }
 
     public function incidenciasCreadas()

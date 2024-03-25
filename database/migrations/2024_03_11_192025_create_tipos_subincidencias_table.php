@@ -25,4 +25,4 @@ class CreateTiposSubIncidenciasTable extends Migration
         
         Schema::dropIfExists('tbl_tipos_subincidencias');
     }
-}
+};

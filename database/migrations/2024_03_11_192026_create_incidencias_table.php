@@ -20,7 +20,6 @@ class CreateIncidenciasTable extends Migration
             $table->text('comentario_inci')->nullable();
             
             $table->foreignId('id_cliente')->nullable()->constrained('users');
-            $table->foreignId('id_tecnico')->nullable()->constrained('users');
 
             $table->timestamps();
         });
@@ -32,9 +31,8 @@ class CreateIncidenciasTable extends Migration
             $table->dropForeign(['tipo_incidencia_id']);
             $table->dropForeign(['tipo_subincidencia_id']);
             $table->dropForeign(['id_cliente']);
-            $table->dropForeign(['id_tecnico']);
         });
 
         Schema::dropIfExists('tbl_incidencias');
     }
-}
+};

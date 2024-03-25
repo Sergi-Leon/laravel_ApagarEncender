@@ -11,7 +11,7 @@ class Incidencia extends Model
 
     protected $table = 'tbl_incidencias';
 
-    protected $fillable = ['tipo_incidencia_id','tipo_subincidencia_id','descripcion_inci','fecha_create_inci','fecha_resuelta_inci','estado_inci','prioridad_inci','comentario_inci','id_cliente','id_tecnico'];
+    protected $fillable = ['tipo_incidencia_id','tipo_subincidencia_id','descripcion_inci','fecha_create_inci','fecha_resuelta_inci','estado_inci','prioridad_inci','comentario_inci','id_cliente'];
 
     public function tipoIncidencia()
     {
@@ -26,11 +26,6 @@ class Incidencia extends Model
     public function cliente()
     {
         return $this->belongsTo(User::class, 'id_cliente');
-    }
-
-    public function tecnico()
-    {
-        return $this->belongsTo(User::class, 'id_tecnico');
     }
 
     public function asignaciones()
